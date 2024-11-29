@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maths Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="maths-quiz-page">
+  <div class="quiz-container">
+    <h1>Maths Quiz</h1>
+    <div class="question">
+      <p>1. What is 2 + 2?</p>
+      <div class="option"><input type="radio" name="q1" value="A"> 4</div>
+      <div class="option"><input type="radio" name="q1" value="B"> 5</div>
+      <div class="option"><input type="radio" name="q1" value="C"> 6</div>
+    </div>
+    <div class="question">
+      <p>2. What is 3 × 3?</p>
+      <div class="option"><input type="radio" name="q2" value="A"> 6</div>
+      <div class="option"><input type="radio" name="q2" value="B"> 9</div>
+      <div class="option"><input type="radio" name="q2" value="C"> 12</div>
+    </div>
+    <div class="question">
+      <p>3. What is the square root of 64?</p>
+      <div class="option"><input type="radio" name="q3" value="A"> 6</div>
+      <div class="option"><input type="radio" name="q3" value="B"> 8</div>
+      <div class="option"><input type="radio" name="q3" value="C"> 10</div>
+    </div>
+    <div class="question">
+      <p>4. What is 15 ÷ 3?</p>
+      <div class="option"><input type="radio" name="q4" value="A"> 3</div>
+      <div class="option"><input type="radio" name="q4" value="B"> 4</div>
+      <div class="option"><input type="radio" name="q4" value="C"> 5</div>
+    </div>
+    <div class="question">
+      <p>5. What is 12 × 12?</p>
+      <div class="option"><input type="radio" name="q5" value="A"> 144</div>
+      <div class="option"><input type="radio" name="q5" value="B"> 154</div>
+      <div class="option"><input type="radio" name="q5" value="C"> 164</div>
+    </div>
+    <div class="question">
+      <p>6. What is the value of π (Pi) up to two decimal places?</p>
+      <div class="option"><input type="radio" name="q6" value="A"> 3.12</div>
+      <div class="option"><input type="radio" name="q6" value="B"> 3.14</div>
+      <div class="option"><input type="radio" name="q6" value="C"> 3.16</div>
+    </div>
+    <div class="question">
+      <p>7. What is 10% of 200?</p>
+      <div class="option"><input type="radio" name="q7" value="A"> 10</div>
+      <div class="option"><input type="radio" name="q7" value="B"> 20</div>
+      <div class="option"><input type="radio" name="q7" value="C"> 30</div>
+    </div>
+    <div class="question">
+      <p>8. What is 7 × 8?</p>
+      <div class="option"><input type="radio" name="q8" value="A"> 49</div>
+      <div class="option"><input type="radio" name="q8" value="B"> 54</div>
+      <div class="option"><input type="radio" name="q8" value="C"> 56</div>
+    </div>
+    <div class="question">
+      <p>9. What is 81 ÷ 9?</p>
+      <div class="option"><input type="radio" name="q9" value="A"> 8</div>
+      <div class="option"><input type="radio" name="q9" value="B"> 9</div>
+      <div class="option"><input type="radio" name="q9" value="C"> 10</div>
+    </div>
+    <div class="question">
+      <p>10. What is 5³?</p>
+      <div class="option"><input type="radio" name="q10" value="A"> 25</div>
+      <div class="option"><input type="radio" name="q10" value="B"> 125</div>
+      <div class="option"><input type="radio" name="q10" value="C"> 625</div>
+    </div>
+    <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+  </div>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const correctAnswers = {
+        q1: 'A', q2: 'B', q3: 'B', q4: 'C', q5: 'A',
+        q6: 'B', q7: 'B', q8: 'C', q9: 'B', q10: 'B'
+      };
+
+      for (let i = 1; i <= 10; i++) {
+        const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!selectedOption) {
+          alert(`Please select an option for question ${i}.`);
+          return;
+        }
+        if (selectedOption.value === correctAnswers[`q${i}`]) {
+          score++;
+        }
+      }
+
+      localStorage.setItem('score', score);
+      localStorage.setItem('quizName', 'Maths Quiz');  // Example quiz name
+
+      window.location.href = 'congratulations.html';
+      
+    }
+    
+  </script>
+</body>
+</html>

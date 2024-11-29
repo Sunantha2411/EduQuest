@@ -1,0 +1,198 @@
+/* Global Reset and Box Model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    font-size: 1rem;
+    padding: 10px; /* For spacing on small screens */
+}
+
+/* Quiz Container */
+.quiz-container {
+    background: whitesmoke;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 750px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensures full-width alignment for children */
+    text-align: left; /* Aligns text to the left */
+}
+
+/* Questions and Options Styling */
+.quiz-question {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.quiz-question input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Buttons (Submit, Login, Start Quiz) */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px auto 0;
+  display: block;
+}
+
+button:hover,
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+
+/* Specific Page Background Images */
+body.login-page { background-image: url('login.jpg'); }
+body.select-quiz-page { background-image: url('selectquiz.jpg'); }
+body.sdg-quiz-page { background-image: url('sdg.webp'); }
+body.science-quiz-page { background-image: url('science.jpg'); }
+body.maths-quiz-page { background-image: url('maths.jpg'); }
+body.computerscience-quiz-page { background-image: url('computerscience.jpg'); }
+body.socialscience-quiz-page { background-image: url('socialscience.avif'); }
+body.arts-quiz-page { background-image: url('arts.jpg'); }
+body.coding-quiz-page { background-image: url('coding.jpg'); }
+body.english-quiz-page { background-image: url('english.jpg'); }
+body.random-quiz-page { background-image: url('randomquiz.avif');}
+body.congratulations-page { 
+    background-image: url('congratulations.webp'); 
+    color: black; 
+}
+/* Style for the leaderboard */
+#leaderboard {
+    margin-bottom: 30px; /* Add space below the leaderboard */
+}
+
+/* Style for social media share buttons */
+.social-share {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px; /* Add space above the social share buttons */
+}
+
+.social-btn {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    
+}
+
+/* Shadow effect on hover */
+.social-btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transform: scale(1.1); /* Slightly increase the size */
+    background-color: white;
+}
+   
+
+.social-btn:active {
+    background-color: #e0e0e0; /* Neutral color for press */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95); /* Slightly smaller on touch */
+}
+
+/* Optional: Customize the colors of the icons */
+#facebook-share i {
+    color: #3b5998;
+}
+
+#twitter-share i {
+    color: #00acee;
+}
+
+#instagram-share i {
+    color: #e4405f;
+}
+
+#whatsapp-share i {
+    color: #25d366;
+}
+
+/* Headings */
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color:  #27006b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Input Field Styling */
+input[type="text"], input[type="tel"], select {
+    width: 100%;
+    padding: 1rem;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .quiz-container {
+        margin-top: 5vh;
+    }
+
+    button,
+    .submit-btn {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}

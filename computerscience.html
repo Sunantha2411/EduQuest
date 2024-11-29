@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Science Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="computerscience-quiz-page">
+  <div class="quiz-container">
+    <h1>Computer Science Quiz</h1>
+    <div class="question">
+      <p>1. What does CPU stand for?</p>
+      <div class="option"><input type="radio" name="q1" value="A"> Central Processing Unit</div>
+      <div class="option"><input type="radio" name="q1" value="B"> Central Processor Unit</div>
+      <div class="option"><input type="radio" name="q1" value="C"> Computer Personal Unit</div>
+    </div>
+    <div class="question">
+      <p>2. What is the full form of HTML?</p>
+      <div class="option"><input type="radio" name="q2" value="A"> HyperText Markup Language</div>
+      <div class="option"><input type="radio" name="q2" value="B"> HyperText Management Language</div>
+      <div class="option"><input type="radio" name="q2" value="C"> HomeText Markup Language</div>
+    </div>
+    <div class="question">
+      <p>3. What does RAM stand for?</p>
+      <div class="option"><input type="radio" name="q3" value="A"> Read Access Memory</div>
+      <div class="option"><input type="radio" name="q3" value="B"> Random Access Memory</div>
+      <div class="option"><input type="radio" name="q3" value="C"> Run Access Memory</div>
+    </div>
+    <div class="question">
+      <p>4. What is the primary purpose of an operating system?</p>
+      <div class="option"><input type="radio" name="q4" value="A"> To run games</div>
+      <div class="option"><input type="radio" name="q4" value="B"> To manage hardware and software resources</div>
+      <div class="option"><input type="radio" name="q4" value="C"> To protect data</div>
+    </div>
+    <div class="question">
+      <p>5. What is an algorithm?</p>
+      <div class="option"><input type="radio" name="q5" value="A"> A type of computer program</div>
+      <div class="option"><input type="radio" name="q5" value="B"> A set of instructions to solve a problem</div>
+      <div class="option"><input type="radio" name="q5" value="C"> A programming language</div>
+    </div>
+    <div class="question">
+      <p>6. What does GUI stand for?</p>
+      <div class="option"><input type="radio" name="q6" value="A"> Graphical User Interaction</div>
+      <div class="option"><input type="radio" name="q6" value="B"> Graphical User Interface</div>
+      <div class="option"><input type="radio" name="q6" value="C"> General User Interface</div>
+    </div>
+    <div class="question">
+      <p>7. What is the function of a compiler?</p>
+      <div class="option"><input type="radio" name="q7" value="A"> To execute programs directly</div>
+      <div class="option"><input type="radio" name="q7" value="B"> To convert source code into machine code</div>
+      <div class="option"><input type="radio" name="q7" value="C"> To store programs</div>
+    </div>
+    <div class="question">
+      <p>8. What is a byte?</p>
+      <div class="option"><input type="radio" name="q8" value="A"> A single bit of data</div>
+      <div class="option"><input type="radio" name="q8" value="B"> A unit of data typically consisting of 8 bits</div>
+      <div class="option"><input type="radio" name="q8" value="C"> A type of computer processor</div>
+    </div>
+    <div class="question">
+      <p>9. What does LAN stand for?</p>
+      <div class="option"><input type="radio" name="q9" value="A"> Local Area Network</div>
+      <div class="option"><input type="radio" name="q9" value="B"> Logical Access Network</div>
+      <div class="option"><input type="radio" name="q9" value="C"> Limited Access Network</div>
+    </div>
+    <div class="question">
+      <p>10. What is the binary representation of the decimal number 5?</p>
+      <div class="option"><input type="radio" name="q10" value="A"> 101</div>
+      <div class="option"><input type="radio" name="q10" value="B"> 110</div>
+      <div class="option"><input type="radio" name="q10" value="C"> 100</div>
+    </div>
+    <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+  </div>
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const correctAnswers = {
+        q1: 'A', 
+        q2: 'A', 
+        q3: 'B', 
+        q4: 'B', 
+        q5: 'B', 
+        q6: 'B', 
+        q7: 'B', 
+        q8: 'B', 
+        q9: 'A', 
+        q10: 'A'
+      };
+      for (let i = 1; i <= 10; i++) {
+        const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!selectedOption) {
+          alert(`Please select an option for question ${i}.`);
+          return;
+        }
+        if (selectedOption.value === correctAnswers[`q${i}`]) {
+          score++;
+        }
+      }
+      localStorage.setItem('score', score);
+      localStorage.setItem('quizName', 'Computer Science Quiz');  // Example quiz name
+
+      window.location.href = 'congratulations.html';
+    }
+  </script>
+</body>
+</html>

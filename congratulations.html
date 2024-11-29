@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="congratulations-page">
+    <div class="quiz-container">
+        <h1>Congratulations!</h1>
+        <p>You have completed the Quiz.</p>
+        <p>Your Score: <span id="score"></span>/10</p>
+
+        <!-- Leaderboard Section -->
+        <h2>Leaderboard</h2>
+        <div id="leaderboard">
+            <!-- Leaderboard content will be inserted here dynamically -->
+        </div>
+
+        <!-- Social Media Share Buttons -->
+        <h3>Share Your Results
+        </h3>
+        <div class="social-share">
+            <!-- Share Buttons with Icons -->
+            <button id="facebook-share" class="social-btn"><i class="fab fa-facebook"></i></button>
+            <button id="twitter-share" class="social-btn"><i class="fab fa-twitter"></i></button>
+            <button id="instagram-share" class="social-btn"><i class="fab fa-instagram"></i></button>
+            <button id="whatsapp-share" class="social-btn"><i class="fab fa-whatsapp"></i></button>
+        </div>
+
+
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        // Get the quiz name and score from localStorage
+        const quizName = localStorage.getItem('quizName');
+        const score = localStorage.getItem('score');
+        
+        // Display the score on the page
+        document.getElementById('score').textContent = score;
+
+        // Get the username from localStorage
+        const userName = localStorage.getItem('username'); // Username set during login
+
+        // Retrieve the leaderboard for the current quiz from localStorage, or initialize an empty array
+        let leaderboard = JSON.parse(localStorage.getItem(`${quizName}-leaderboard`)) || [];
+
+        // Add the current score and username to the leaderboard
+        leaderboard.push({ name: userName, score: parseInt(score) });
+
+        // Sort the leaderboard in descending order by score
+        leaderboard.sort((a, b) => b.score - a.score);
+
+        // Store the updated leaderboard back into localStorage
+        localStorage.setItem(`${quizName}-leaderboard`, JSON.stringify(leaderboard));
+
+        // Display the leaderboard
+        const leaderboardDiv = document.getElementById('leaderboard');
+        leaderboardDiv.innerHTML = ''; // Clear any existing leaderboard content
+        leaderboard.forEach((entry, index) => {
+            const entryDiv = document.createElement('div');
+            entryDiv.textContent = `${index + 1}. ${entry.name} - ${entry.score} points`;
+            leaderboardDiv.appendChild(entryDiv);
+        });
+
+        // Social Media Share Buttons
+        document.getElementById('facebook-share').addEventListener('click', function() {
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=I%20just%20completed%20the%20${quizName}%20quiz!%20My%20score%20is%20${score}%20out%20of%2010.`;
+            window.open(shareUrl, '_blank');
+        });
+
+        document.getElementById('twitter-share').addEventListener('click', function() {
+            const tweetUrl = `https://twitter.com/intent/tweet?text=I%20just%20completed%20the%20${quizName}%20quiz!%20My%20score%20is%20${score}%20out%20of%2010.%20Check%20it%20out!%20${encodeURIComponent(window.location.href)}`;
+            window.open(tweetUrl, '_blank');
+        });
+
+        document.getElementById('instagram-share').addEventListener('click', function() {
+            // Instagram does not allow direct sharing via URL, but users can share via Instagram app
+            alert('Instagram sharing is not directly supported from a web browser. Please share your results using the Instagram app!');
+        });
+
+        document.getElementById('whatsapp-share').addEventListener('click', function() {
+            const whatsappUrl = `https://wa.me/?text=I%20just%20completed%20the%20${quizName}%20quiz!%20My%20score%20is%20${score}%20out%20of%2010.%20Check%20it%20out!%20${encodeURIComponent(window.location.href)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        
+
+        // Redirect to login page if user clicks "Go Back"
+        function goBack() {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

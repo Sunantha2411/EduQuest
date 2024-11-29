@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Quiz - EduQuest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="select-quiz-page">
+    <div class="quiz-container">
+        <h1 id="username-display">EduQuest</h1>
+        <form id="quizForm" onsubmit="startQuiz(event)">
+            <label for="quiz">Select a Quiz:</label>
+            <select id="quiz" required>
+                <option value="">--Select a Quiz--</option>
+                <option value="sdg">SDG Quiz</option>
+                <option value="maths">Maths Quiz</option>
+                <option value="science">Science Quiz</option>
+                <option value="computerscience">Computer Science Quiz</option>
+                <option value="coding">Coding Quiz</option>
+                <option value="arts">Arts Quiz</option>
+                <option value="english">English Quiz</option>
+                <option value="socialscience">Social Science Quiz</option>
+                <option value="randomquiz">Random Quiz</option>
+
+            </select>
+            <button type="submit">Start Quiz</button>
+        </form>
+    </div>
+    <script>
+        function startQuiz(quizName) {
+            // Set the quiz name in localStorage to identify the quiz
+            localStorage.setItem('quizName', quizName);
+    
+            // Redirect to the quiz page
+            window.location.href = `${quizName.toLowerCase()}quiz.html`; // Assuming quiz pages are named like 'sdg-quiz.html'
+        }
+    </script>    
+
+    <script src="selectquiz.js"></script>
+</body>
+</html>

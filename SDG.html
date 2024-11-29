@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDG Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="sdg-quiz-page">
+  <div class="quiz-container">
+    <h1>Sustainable Development Goals (SDG) Quiz</h1>
+    <div class="question">
+      <p>1. What does "SDG" stand for?</p>
+      <div class="option"><input type="radio" name="q1" value="A"> Sustainable Development Goals</div>
+      <div class="option"><input type="radio" name="q1" value="B"> Social Development Goals</div>
+      <div class="option"><input type="radio" name="q1" value="C"> Standard Development Goals</div>
+    </div>
+    <div class="question">
+      <p>2. What is the main goal of SDG 4?</p>
+      <div class="option"><input type="radio" name="q2" value="A"> End hunger</div>
+      <div class="option"><input type="radio" name="q2" value="B"> Quality Education for all</div>
+      <div class="option"><input type="radio" name="q2" value="C"> Combat climate change</div>
+    </div>
+    <div class="question">
+      <p>3. Which SDG focuses on Clean Water and Sanitation?</p>
+      <div class="option"><input type="radio" name="q3" value="A"> SDG 6</div>
+      <div class="option"><input type="radio" name="q3" value="B"> SDG 13</div>
+      <div class="option"><input type="radio" name="q3" value="C"> SDG 3</div>
+    </div>
+    <div class="question">
+      <p>4. What is the primary focus of SDG 13?</p>
+      <div class="option"><input type="radio" name="q4" value="A"> Affordable and Clean Energy</div>
+      <div class="option"><input type="radio" name="q4" value="B"> Climate Action</div>
+      <div class="option"><input type="radio" name="q4" value="C"> Sustainable Cities</div>
+    </div>
+    <div class="question">
+      <p>5. Which SDG promotes gender equality?</p>
+      <div class="option"><input type="radio" name="q5" value="A"> SDG 5</div>
+      <div class="option"><input type="radio" name="q5" value="B"> SDG 7</div>
+      <div class="option"><input type="radio" name="q5" value="C"> SDG 15</div>
+    </div>
+    <div class="question">
+      <p>6. What is targeted by SDG 1?</p>
+      <div class="option"><input type="radio" name="q6" value="A"> No Poverty</div>
+      <div class="option"><input type="radio" name="q6" value="B"> Zero Hunger</div>
+      <div class="option"><input type="radio" name="q6" value="C"> Decent Work</div>
+    </div>
+    <div class="question">
+      <p>7. Which SDG emphasizes reducing inequality?</p>
+      <div class="option"><input type="radio" name="q7" value="A"> SDG 3</div>
+      <div class="option"><input type="radio" name="q7" value="B"> SDG 10</div>
+      <div class="option"><input type="radio" name="q7" value="C"> SDG 11</div>
+    </div>
+    <div class="question">
+      <p>8. Which SDG focuses on Life Below Water?</p>
+      <div class="option"><input type="radio" name="q8" value="A"> SDG 9</div>
+      <div class="option"><input type="radio" name="q8" value="B"> SDG 14</div>
+      <div class="option"><input type="radio" name="q8" value="C"> SDG 12</div>
+    </div>
+    <div class="question">
+      <p>9. What is the main aim of SDG 2?</p>
+      <div class="option"><input type="radio" name="q9" value="A"> Zero Hunger</div>
+      <div class="option"><input type="radio" name="q9" value="B"> Good Health</div>
+      <div class="option"><input type="radio" name="q9" value="C"> No Poverty</div>
+    </div>
+    <div class="question">
+      <p>10. Which SDG promotes peace and strong institutions?</p>
+      <div class="option"><input type="radio" name="q10" value="A"> SDG 16</div>
+      <div class="option"><input type="radio" name="q10" value="B"> SDG 11</div>
+      <div class="option"><input type="radio" name="q10" value="C"> SDG 8</div>
+    </div>
+    <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+  </div>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const correctAnswers = {
+        q1: 'A', q2: 'B', q3: 'A', q4: 'B', q5: 'A',
+        q6: 'A', q7: 'B', q8: 'B', q9: 'A', q10: 'A'
+      };
+
+      // Loop through each question and check if an answer is selected
+      for (let i = 1; i <= 10; i++) {
+        const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!selectedOption) {
+          alert(`Please select an option for question ${i}.`);
+          return; // Stop the function if any question is unanswered
+        }
+        if (selectedOption.value === correctAnswers[`q${i}`]) {
+          score++;
+        }
+      }
+
+      // Store score in localStorage
+      localStorage.setItem('score', score);
+      localStorage.setItem('quizName', 'SDG Quiz');  // Example quiz name
+
+      // Redirect to the congratulations page after submission
+      window.location.href = 'congratulations.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="english-quiz-page">
+  <div class="quiz-container">
+    <h1>English Quiz</h1>
+    <div class="question">
+      <p>1. What is the synonym of 'happy'?</p>
+      <div class="option"><input type="radio" name="q1" value="A"> Joyful</div>
+      <div class="option"><input type="radio" name="q1" value="B"> Sad</div>
+      <div class="option"><input type="radio" name="q1" value="C"> Angry</div>
+    </div>
+    <div class="question">
+      <p>2. What is the plural of 'child'?</p>
+      <div class="option"><input type="radio" name="q2" value="A"> Children</div>
+      <div class="option"><input type="radio" name="q2" value="B"> Childs</div>
+      <div class="option"><input type="radio" name="q2" value="C"> Childes</div>
+    </div>
+    <div class="question">
+      <p>3. Which of the following is a noun?</p>
+      <div class="option"><input type="radio" name="q3" value="A"> Running</div>
+      <div class="option"><input type="radio" name="q3" value="B"> Quick</div>
+      <div class="option"><input type="radio" name="q3" value="C"> Happiness</div>
+    </div>
+    <div class="question">
+      <p>4. What is the past tense of 'go'?</p>
+      <div class="option"><input type="radio" name="q4" value="A"> Gone</div>
+      <div class="option"><input type="radio" name="q4" value="B"> Went</div>
+      <div class="option"><input type="radio" name="q4" value="C"> Goned</div>
+    </div>
+    <div class="question">
+      <p>5. What is the antonym of 'hot'?</p>
+      <div class="option"><input type="radio" name="q5" value="A"> Warm</div>
+      <div class="option"><input type="radio" name="q5" value="B"> Cold</div>
+      <div class="option"><input type="radio" name="q5" value="C"> Soft</div>
+    </div>
+    <div class="question">
+      <p>6. What is the opposite of 'increase'?</p>
+      <div class="option"><input type="radio" name="q6" value="A"> Expand</div>
+      <div class="option"><input type="radio" name="q6" value="B"> Decrease</div>
+      <div class="option"><input type="radio" name="q6" value="C"> Increase</div>
+    </div>
+    <div class="question">
+      <p>7. Which one is a sentence fragment?</p>
+      <div class="option"><input type="radio" name="q7" value="A"> She loves reading books.</div>
+      <div class="option"><input type="radio" name="q7" value="B"> After the rain stopped.</div>
+      <div class="option"><input type="radio" name="q7" value="C"> They are playing football.</div>
+    </div>
+    <div class="question">
+      <p>8. Which of these is a preposition?</p>
+      <div class="option"><input type="radio" name="q8" value="A"> Quickly</div>
+      <div class="option"><input type="radio" name="q8" value="B"> Under</div>
+      <div class="option"><input type="radio" name="q8" value="C"> Softly</div>
+    </div>
+    <div class="question">
+      <p>9. Choose the correct form: 'I ____ a book.'</p>
+      <div class="option"><input type="radio" name="q9" value="A"> Reads</div>
+      <div class="option"><input type="radio" name="q9" value="B"> Read</div>
+      <div class="option"><input type="radio" name="q9" value="C"> Reading</div>
+    </div>
+    <div class="question">
+      <p>10. What is the meaning of 'benevolent'?</p>
+      <div class="option"><input type="radio" name="q10" value="A"> Mean</div>
+      <div class="option"><input type="radio" name="q10" value="B"> Kind-hearted</div>
+      <div class="option"><input type="radio" name="q10" value="C"> Selfish</div>
+    </div>
+    <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+  </div>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const correctAnswers = {
+        q1: 'A', q2: 'A', q3: 'C', q4: 'B', q5: 'B',
+        q6: 'B', q7: 'B', q8: 'B', q9: 'B', q10: 'B'
+      };
+      for (let i = 1; i <= 10; i++) {
+        const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!selectedOption) {
+          alert(`Please select an option for question ${i}.`);
+          return;
+        }
+        if (selectedOption.value === correctAnswers[`q${i}`]) {
+          score++;
+        }
+      }
+      localStorage.setItem('score', score);
+      localStorage.setItem('quizName', 'English Quiz');  // Example quiz name
+
+      window.location.href = 'congratulations.html';
+    }
+  </script>
+</body>
+</html>
